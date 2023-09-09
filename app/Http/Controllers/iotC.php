@@ -26,8 +26,6 @@ class iotC extends Controller
 
         
         try {
-
-
             $token_sensor = $request->header('token-sensor');
             
             $cek = alatM::where('token_sensor', $token_sensor)->count();
@@ -59,7 +57,7 @@ class iotC extends Controller
 
                 $cekEmail = emailM::orderBy("idemail", "desc");
 
-                if($cekEmail->count() == 0 || $cekEmail->first()->ket == "normal") {
+                if($cekEmail->count() == 0 || $cekEmail->first()->ket == "normal" || $cekEmail->first()->ket == "sedang") {
                     emailM::create([
                         "tinggi" => $tinggi."Cm",
                         "ket" => $ket,
